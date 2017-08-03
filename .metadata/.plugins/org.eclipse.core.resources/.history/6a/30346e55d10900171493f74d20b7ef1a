@@ -1,0 +1,68 @@
+package stacksNqueues;
+
+import java.util.Stack;
+
+public class ExpressionEvaluator
+{
+	private Stack parenthesis;
+	private Stack operators;
+	private Stack operands;
+	public String expression;
+
+	public ExpressionEvaluator(String expr)
+	{
+		parenthesis = new Stack<>();
+		operators = new Stack<>();
+		operands = new Stack<>();
+		expression = expr;
+	}
+
+	public boolean isOperator(char input)
+	{
+		String operators = "+-*/=";
+		for (int i = 0; i < operators.length(); i++)
+		{
+			if (input == operators.charAt(i))
+			{
+				return true;
+			}
+		}
+
+		return false;
+	}
+
+	public boolean isParenthesis(char input)
+	{
+		String parenthesis = "{([";
+		for (int i = 0; i < parenthesis.length(); i++)
+		{
+			if (input == parenthesis.charAt(i))
+			{
+				return true;
+			}
+		}
+		return false;
+	}
+
+	
+	public int evaluate()
+	{
+		for(char c: expression.toCharArray())
+		{
+			if(isOperator(c))
+				operators.push(c);
+			if(isParenthesis(c))
+				parenthesis.push(c);
+			else if(Character.isDigit(c))
+				operands.push(c);
+		}
+		return 0;
+	}
+	
+	public static void main(String[] args)
+	{
+		ExpressionEvaluator popi= new ExpressionEvaluator("(3+5)*(8-(9/3)");
+		popi.evaluate();
+	}
+	
+}

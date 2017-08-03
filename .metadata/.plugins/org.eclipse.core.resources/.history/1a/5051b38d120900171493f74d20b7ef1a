@@ -1,0 +1,53 @@
+package recursion;
+
+import java.util.ArrayList;
+
+public class  Permutations
+{
+	public static ArrayList<String> permutations(int n)
+	{
+		
+		String combos="";
+		int ch= (char)'A';
+		
+		for(int i=0;i<=n;i++)
+		{
+			combos=combos+(char)ch;
+			ch++;
+		}
+		
+		
+		return perms;
+		
+	}
+	
+	private ArrayList<String> recPerms(String combo)
+	{
+		ArrayList<String> perms = new ArrayList<>();
+		
+		if(combo.length()==0)
+			perms.add("");
+			return perms;
+		else
+		{
+			for(int i=1;i< combo.length();i++)
+			{
+				String lilCombo= combo.substring(0, i)+combo.substring(i+1);
+				ArrayList<String> lilPerms = recPerms(lilCombo);
+				
+				for(String s: lilPerms)
+				{
+					perms.add(s);
+				}
+			}
+			return perms;
+		}
+		
+	}
+	
+	public static void main(String[] args)
+	{
+		ArrayList<String> perms=permutations(8);
+		System.out.println(perms);
+	}
+}

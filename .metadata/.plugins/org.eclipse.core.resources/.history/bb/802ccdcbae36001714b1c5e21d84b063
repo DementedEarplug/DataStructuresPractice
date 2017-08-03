@@ -1,0 +1,18 @@
+package drafts;
+
+import java.io.IOException;
+
+public class PythonInjava
+{
+	public static void main(String[] args)
+	{
+		try
+		{
+			Process p = Runtime.getRuntime().exec("python hey.py");
+		} catch (IOException e)
+		{
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+}

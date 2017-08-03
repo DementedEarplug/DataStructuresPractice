@@ -1,0 +1,28 @@
+package recursion;
+
+public class power
+{
+
+	public static double power(double base, int exponent)
+	{
+		if(exponent==0)
+			return 1.0;
+		else
+		{
+			if(exponent%2==0)
+			{
+				return power(power(base,(exponent/2)),2);
+			}
+			else 
+			{
+				return power(power(base,((exponent-1)/2)),2)*base;
+			}
+		}
+	}
+	
+	public static void main(String[] args)
+	{
+		System.out.println(power(2.0,2));
+	}
+	
+}
